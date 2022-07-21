@@ -1,0 +1,49 @@
+# 端口
+server:
+  port: 8080
+
+# nacos变量
+nacos:
+  dataId:
+  groupId:
+
+
+# Spring相关配置
+spring:
+  # 应用配置
+  application:
+    name: gateway
+  # 环境配置
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 43.138.34.9:8848
+      config:
+        # 配置中心地址
+        server-addr: 43.138.34.9:8848
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        shared-configs:
+          data-id: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        group: Sirius-Cloud
+        namespace: Public
+    # 流量控制组件
+    sentinel:
+      # 取消控制台懒加载
+      eager: true
+      transport:
+        # 控制台地址
+        dashboard:
+      # nacos配置持久化
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 43.138.34.9:8848
+            data-id: sentinel-gateway-dev
+            group-id: Sirius-Cloud
+            data-type: json
+            rule-type: flow
