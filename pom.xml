@@ -12,6 +12,8 @@
         <module>sirius-demo</module>
         <module>sirius-gateway</module>
         <module>sirius-common</module>
+        <module>sirius-user</module>
+        <module>sirius-drawing-bed</module>
     </modules>
 
     <properties>
