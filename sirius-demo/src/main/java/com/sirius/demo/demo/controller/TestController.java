@@ -27,4 +27,9 @@ public class TestController {
     public List<TestEntity> list(){
         return iTestService.list();
     }
+
+    @RequestMapping(value = "/testEntityList",method = RequestMethod.POST)
+    public List<TestEntity> testEntityList(){
+        return iTestService.testEntityList();
+    }
 }

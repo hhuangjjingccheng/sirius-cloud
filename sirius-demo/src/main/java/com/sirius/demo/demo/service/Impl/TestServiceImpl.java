@@ -7,6 +7,9 @@ import com.sirius.demo.demo.service.ITestService;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * @author huangjingcheng
  * @version 1.0.0
@@ -16,4 +19,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TestServiceImpl extends ServiceImpl<TestMapper, TestEntity> implements ITestService {
+
+    @Resource
+    private TestMapper testMapper;
+
+    /**
+     * 测试Mybatis-plus
+     *
+     * @return
+     */
+    @Override
+    public List<TestEntity> testEntityList() {
+        return testMapper.testEntityList();
+    }
 }
