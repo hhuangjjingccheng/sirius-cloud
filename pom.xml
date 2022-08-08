@@ -13,6 +13,7 @@
         <module>sirius-gateway</module>
         <module>sirius-common</module>
         <module>sirius-user</module>
+        <module>sirius-questionnaire</module>
     </modules>
 
     <properties>
@@ -47,6 +48,8 @@
         <mybatis-plus.version>3.5.1</mybatis-plus.version>
         <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
         <druid.version>1.2.8</druid.version>
+        <easypoi-spring-boot-starter.version>4.4.0</easypoi-spring-boot-starter.version>
+        <easyexcel.version>3.1.1</easyexcel.version>
     </properties>
 
     <dependencyManagement>
@@ -215,6 +218,19 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+<!--            &lt;!&ndash; https://mvnrepository.com/artifact/cn.afterturn/easypoi-spring-boot-starter &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>cn.afterturn</groupId>-->
+<!--                <artifactId>easypoi-spring-boot-starter</artifactId>-->
+<!--                <version>${easypoi-spring-boot-starter.version}</version>-->
+<!--            </dependency>-->
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
             </dependency>
 
         </dependencies>
