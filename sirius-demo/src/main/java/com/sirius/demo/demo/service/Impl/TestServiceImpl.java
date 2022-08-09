@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author huangjingcheng
@@ -32,4 +32,14 @@ public class TestServiceImpl extends ServiceImpl<TestMapper, TestEntity> impleme
     public List<TestEntity> testEntityList() {
         return testMapper.testEntityList();
     }
+
+    @Override
+    public List<TestEntity> testEntityList(String s){
+//        Collections.;
+        TreeMap<String,Object> treeMap = new TreeMap<>();
+        Map<String,Object> map = new HashMap<>();
+        return null;
+    }
+
+
 }

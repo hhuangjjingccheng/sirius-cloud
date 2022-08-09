@@ -1,95 +1,75 @@
 package com.sirius.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
-
-public class Demo{
-
-    //利用线程池对于一个长数组处理
-    public static void main(String[] args) {
-
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
-        List<Integer> list = new ArrayList<>();
-        for(int i= 1;i<=1000; i++){
-            list.add(i);
-        }
-
-        List<List<Integer>> splistList = splistList(list,100);
-
-        ArrayList<Future<ArrayList<Integer>>> resultList = new ArrayList<Future<ArrayList<Integer>>>();
-
-        for(int i=0;i<splistList.size();i++){
-
-            List<Integer> temp = splistList.get(i);
-            Future future = executorService.submit(new Callable<Object>() {
-                @Override
-                public Object call() throws Exception {
-                    List<Integer> resultTemp = new ArrayList<>();
-                    for(int a: temp){
-                        resultTemp.add(a+2);
-                    }
-
-                    return resultTemp;
-                }
-            });
-            resultList.add(future);
-        }
-
-        //关闭线程池，但是不是立即关闭，是等待所有线程完毕，不会新开线程
-        executorService.shutdown();
-
-
-        List<Integer> lastList = new ArrayList<>();
-        while(true){
-            //判断线程池的线程是否都已经执行完毕
-            if(executorService.isTerminated()){
-                System.out.println("长度为：" + resultList.size());
-                for(int i = 0; i< resultList.size(); i++){
-                    try {
-                        lastList.addAll(resultList.get(i).get());
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
-            }
-            System.out.println("还没完");
-        }
-
-        System.out.println(lastList.get(list.size()-1));//查看最后一个数
-    }
-
-    public static List<List<Integer>> splistList(List<Integer> list, int splitSize) {
-        if (null == list) {
-            return null;
-        }
-        int listSize = list.size();
-        List<List<Integer>> newList = new ArrayList<List<Integer>>();
-        if (listSize < splitSize) {
-            newList.add(list);
-            return newList;
-        }
-        int addLength = splitSize;
-        int times = listSize / splitSize;
-        if (listSize % splitSize != 0) {
-            times += 1;
-        }
-        int start = 0;
-        int end = 0;
-        int last = times - 1;
-        for (int i = 0; i < times; i++) {
-            start = i * splitSize;
-            if (i < last) {
-                end = start + addLength;
-            } else {
-                end = listSize;
-            }
-            newList.add(list.subList(start, end));
-        }
-        return newList;
+/**
+ * @author huangjingcheng
+ * @version 1.0.0
+ * @ClassName Text.java
+ * @Description TODO
+ * @createTime 2022年08月09日 09:46:00
+ */
+public class Demo {
+    public static void main(String[] args) throws CloneNotSupportedException
+    {
+        Teacher teacher = new Teacher();
+        teacher.setName("riemann");
+        teacher.setAge(27);
+        Student2 student1 = new Student2();
+        student1.setName("edgar");
+        student1.setAge(18);
+        student1.setTeacher(teacher);
+        Student2 student2 = (Student2) student1.clone();
+        System.out.println("拷⻉后");
+        System.out.println(student2.getName());
+        System.out.println(student2.getAge());
+        System.out.println(student2.getTeacher().getName());
+        System.out.println(student2.getTeacher().getAge());
+        System.out.println("修改⽼师的信息后——————");
+        // 修改⽼师的信息
+        teacher.setName("Games");
+        System.out.println(student1.getTeacher().getName());
+        System.out.println(student2.getTeacher().getName());
     }
 }
-
+class Teacher implements Cloneable {
+    private String name;
+    private int age;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+class Student2 implements Cloneable {
+    private String name;
+    private int age;
+    private Teacher teacher;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public Teacher getTeacher() {
+        return teacher;
+    }
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+    public Object clone() throws CloneNotSupportedException {
+        Object object = super.clone();
+        return object;
+    }
+}

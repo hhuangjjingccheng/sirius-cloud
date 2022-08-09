@@ -20,4 +20,6 @@ public interface ITestService extends IService<TestEntity> {
      * @return
      */
     List<TestEntity> testEntityList();
+
+    List<TestEntity> testEntityList(String s);
 }
