@@ -22,31 +22,31 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/redis")
 @Log4j2
 public class RedisDemoController {
-
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
-
-    @Resource
-    private Redisson redisson;
-
-    @RequestMapping(value = "/duductStock", method = RequestMethod.POST)
-    public String duductStock() {
-        String lockName = "lockName";
-        RLock lock = redisson.getLock(lockName);
-        try {
-            lock.lock(30, TimeUnit.SECONDS);
-            int stock = Integer.parseInt(stringRedisTemplate.opsForValue().get("stock"));
-            if (stock > 0) {
-                int result = stock - 1;
-                stringRedisTemplate.opsForValue().set("stock", result + "");
-                log.info("扣减成功，库存剩余：" + result + "");
-            } else {
-                log.info("扣减失败，库存不足");
-            }
-        } finally {
-            lock.unlock();
-        }
-
-        return "end";
-    }
+//
+//    @Resource
+//    private StringRedisTemplate stringRedisTemplate;
+//
+//    @Resource
+//    private Redisson redisson;
+//
+//    @RequestMapping(value = "/duductStock", method = RequestMethod.POST)
+//    public String duductStock() {
+//        String lockName = "lockName";
+//        RLock lock = redisson.getLock(lockName);
+//        try {
+//            lock.lock(30, TimeUnit.SECONDS);
+//            int stock = Integer.parseInt(stringRedisTemplate.opsForValue().get("stock"));
+//            if (stock > 0) {
+//                int result = stock - 1;
+//                stringRedisTemplate.opsForValue().set("stock", result + "");
+//                log.info("扣减成功，库存剩余：" + result + "");
+//            } else {
+//                log.info("扣减失败，库存不足");
+//            }
+//        } finally {
+//            lock.unlock();
+//        }
+//
+//        return "end";
+//    }
 }
