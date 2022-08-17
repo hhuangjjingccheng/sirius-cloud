@@ -35,6 +35,34 @@ public class MultithreadingOne {
     }
 
     /**
+     * 场景：厨师和小白，在小白点完餐后，
+     * 厨师做菜
+     * 小白的工作（打游戏等待饭菜）
+     * 服务员打饭
+     * 厨师，小白，服务员在各自的线程工作
+     *
+     * 注意：1、thenCompose 在前一个任务有结果后才会触发
+     */
+    @Test
+    public void DemoTwo(){
+        printTimeAndThread("小白进入餐厅");
+        printTimeAndThread("小白点了 番茄炒蛋 + 一碗米饭");
+
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(()->{
+            printTimeAndThread("厨师炒菜");
+            sleepMillis(1000);
+            return "番茄炒蛋";
+        }).thenCompose(dish->CompletableFuture.supplyAsync(()->{
+            printTimeAndThread("服务员打饭");
+            sleepMillis(1000);
+            return dish+"+米饭";
+        }));
+        printTimeAndThread("小白再打王者");
+        printTimeAndThread(String.format("%s,小白开吃",completableFuture.join()));
+        //  join()方法的返回值类型就是CompletableFuture<>的泛型，此代码块中的返回类型就是String
+    }
+
+    /**
      * 当前线程睡眠一段时间（毫秒）
      * @param millis
      */
