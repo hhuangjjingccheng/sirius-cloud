@@ -1,0 +1,6 @@
+server:
+  port: 1998
+
+zookeeper:
+  address: 124.222.73.249:2181
+  timeout: 4000
