@@ -15,6 +15,7 @@
         <module>sirius-user</module>
         <module>sirius-questionnaire</module>
         <module>sirius-zookeeper</module>
+        <module>sirius-security</module>
     </modules>
 
     <properties>
@@ -54,6 +55,7 @@
         <spring-boot-starter-data-redis.version>2.7.2</spring-boot-starter-data-redis.version>
         <redisson.version>3.17.5</redisson.version>
         <zookeeper.version>3.5.7</zookeeper.version>
+        <spring-boot-starter-security.version>2.6.8</spring-boot-starter-security.version>
     </properties>
 
     <dependencyManagement>
@@ -255,6 +257,13 @@
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>${zookeeper.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot-starter-security.version}</version>
             </dependency>
 
 
