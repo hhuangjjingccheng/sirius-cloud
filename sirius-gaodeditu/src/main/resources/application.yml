@@ -1,0 +1,28 @@
+server:
+  port: 1999
+  servlet:
+    context-path: /sirius-gaodeditu
+
+
+# 高德地图相关配置
+amap:
+  web:
+    key: 34ea04bbf24994ec378dd4ad6a441f12
+  weChat:
+    key: 7ddeb1e0bedb78cb0f4ac20279a092c4
+
+
+# httpclient相关配置
+http:
+  # 最大连接数
+  maxTotal: 100
+  # 并发数
+  defaultMaxPerRoute: 20
+  # 创建连接的最长时间
+  connectTimeout: 1000
+  # 从连接池中获取到连接的最长时间
+  connectionRequestTimeout: 500
+  # 数据传输的最长时间
+  socketTimeout: 10000
+  # 提交请求前测试连接是否可用
+  staleConnectionCheckEnabled: true

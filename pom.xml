@@ -16,6 +16,8 @@
         <module>sirius-questionnaire</module>
         <module>sirius-zookeeper</module>
         <module>sirius-security</module>
+        <module>sirius-shiro</module>
+        <module>sirius-gaodeditu</module>
     </modules>
 
     <properties>
@@ -40,7 +42,7 @@
         <commons.io.version>2.11.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
         <velocity.version>2.3</velocity.version>
-        <fastjson.version>2.0.8</fastjson.version>
+        <fastjson2.version>2.0.8</fastjson2.version>
         <jjwt.version>0.9.1</jjwt.version>
         <minio.version>8.2.2</minio.version>
         <poi.version>4.1.2</poi.version>
@@ -56,6 +58,8 @@
         <redisson.version>3.17.5</redisson.version>
         <zookeeper.version>3.5.7</zookeeper.version>
         <spring-boot-starter-security.version>2.6.8</spring-boot-starter-security.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <dependencyManagement>
@@ -101,12 +105,12 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- FastDFS 分布式文件系统 -->
-            <dependency>
-                <groupId>com.github.tobato</groupId>
-                <artifactId>fastdfs-client</artifactId>
-                <version>${tobato.version}</version>
-            </dependency>
+<!--            &lt;!&ndash; FastDFS 分布式文件系统 &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>com.github.tobato</groupId>-->
+<!--                <artifactId>fastdfs-client</artifactId>-->
+<!--                <version>${tobato.version}</version>-->
+<!--            </dependency>-->
 
             <!-- Mybatis 依赖配置 -->
             <dependency>
@@ -180,7 +184,7 @@
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
-                <version>${fastjson.version}</version>
+                <version>${fastjson2.version}</version>
             </dependency>
 
             <!-- JWT -->
@@ -264,6 +268,27 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${spring-boot-starter-security.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>1.9.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
 
 

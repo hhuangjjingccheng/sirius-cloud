@@ -1,7 +1,7 @@
 server:
   port: 1997
   servlet:
-    context-path: /
+    context-path: /sirius-demo
 
 spring:
   datasource:
