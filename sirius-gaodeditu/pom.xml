@@ -18,6 +18,13 @@
     </properties>
 
     <dependencies>
+
+        <!-- SpringCloud Alibaba Nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.sirius</groupId>
             <artifactId>sirius-common</artifactId>

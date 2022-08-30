@@ -3,6 +3,13 @@ server:
   servlet:
     context-path: /sirius-gaodeditu
 
+spring:
+  application:
+    name: sirius-gaodeditu
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 43.138.34.9:8848
 
 # 高德地图相关配置
 amap:
@@ -26,3 +33,4 @@ http:
   socketTimeout: 10000
   # 提交请求前测试连接是否可用
   staleConnectionCheckEnabled: true
+
