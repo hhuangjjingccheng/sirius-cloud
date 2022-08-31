@@ -26,6 +26,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.sirius</groupId>
             <artifactId>sirius-common</artifactId>
             <version>${sirius.version}</version>
