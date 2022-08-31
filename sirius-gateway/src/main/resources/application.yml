@@ -5,6 +5,9 @@ spring:
   application:
     name: sirius-gateway
   cloud:
+    nacos:
+      discovery:
+        server-addr: 43.138.34.9:8848
     gateway:
       # 路由：routes[数组结构] 当求情满足什么样的条件的时候转发到哪个微服务
       routes:
