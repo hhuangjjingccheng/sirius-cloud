@@ -1,0 +1,29 @@
+server:
+  port: 1990
+
+spring:
+  application:
+    name: sirius-gateway
+  cloud:
+    gateway:
+      # 路由：routes[数组结构] 当求情满足什么样的条件的时候转发到哪个微服务
+      routes:
+        - id: sirius-demo
+          uri: http://localhost:1997
+          order: 1
+          predicates:
+              - Path=/demo/**
+          filters:
+            - StripPrefix=1
+
+        - id: sirius-gaodeditu
+          uri: http://localhost:1999
+          order: 1
+          predicates:
+            - Path=/gaodeditu/**
+          filters:
+            - StripPrefix=1
+
+
+
+
