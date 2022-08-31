@@ -9,10 +9,15 @@ spring:
       discovery:
         server-addr: 43.138.34.9:8848
     gateway:
+      discovery:
+        locator:
+          # 让gateway从nacos中获得服务信息
+          enabled: true
       # 路由：routes[数组结构] 当求情满足什么样的条件的时候转发到哪个微服务
       routes:
         - id: sirius-demo
-          uri: http://localhost:1997
+          # lb:负载均衡的标识，后面跟服务名称
+          uri: lb://sirius-demo
           order: 1
           predicates:
               - Path=/demo/**
@@ -20,7 +25,7 @@ spring:
             - StripPrefix=1
 
         - id: sirius-gaodeditu
-          uri: http://localhost:1999
+          uri: lb://sirius-gaodeditu
           order: 1
           predicates:
             - Path=/gaodeditu/**
