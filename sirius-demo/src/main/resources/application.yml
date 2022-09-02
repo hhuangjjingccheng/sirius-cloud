@@ -23,6 +23,14 @@ spring:
         port: 3000
         # sentinel控制台的服务地址
         dashboard: localhost:8080
+      datasource:
+        ds:
+          nacos:
+            server-addr: 43.138.34.9:8848
+            dataId: sirius-demo
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 
   redis:
     host: 127.0.0.1
